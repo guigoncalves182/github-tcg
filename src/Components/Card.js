@@ -1,4 +1,4 @@
-import card from "./Card.module.scss";
+import regular from "./Regular.module.scss";
 import legend from "./Legendary.module.scss";
 import React, { useEffect, useState } from "react";
 import Tilt from "react-parallax-tilt";
@@ -19,7 +19,7 @@ function Card({ github, legendary = false }) {
   legendary ? (glareColor = "#f9d423") : (glareColor = "#ffffff");
 
   let styles;
-  !legendary ? (styles = card) : (styles = legend);
+  !legendary ? (styles = regular) : (styles = legend);
 
   if (loading) return "★ Loading your card ★";
   return (
@@ -29,13 +29,19 @@ function Card({ github, legendary = false }) {
         glareEnable={true}
         glareColor={glareColor}
         scale={1}
-        style={{ backgroundImage: `url("${user.avatar_url}")` }}
+        style={{
+          backgroundImage: `url("${
+            user.avatar_url ? user.avatar_url : "https://picsum.photos/400/400"
+          }")`,
+        }}
       >
         <div className={styles.inner}>
-          <h1 className={styles.title}>
-            {legendary && <span className={styles.star}> ★ </span>}
-            {user.name}
-          </h1>
+          {user.name && (
+            <h1 className={styles.title}>
+              {legendary && <span className={styles.star}> ★ </span>}
+              {user.name}
+            </h1>
+          )}
           {user.bio && <p className={styles.bio}>{user.bio}</p>}
           {user.location && (
             <p className={styles.location}>📍 {user.location} </p>

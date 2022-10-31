@@ -1,3 +1,4 @@
+import "./Home.module.scss";
 import React from "react";
 import { useParams } from "react-router-dom";
 import Card from "./Components/Card";
