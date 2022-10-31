@@ -12,6 +12,7 @@ root.render(
         <Route path="/">
           <Route index element={<Home />} />
           <Route path="/:github" element={<Home />} />
+          <Route path="/:github/:legendary" element={<Home />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Card from "./Components/Card";
 
 function Home() {
-  const { github } = useParams();
+  const { github, legendary } = useParams();
 
   return (
     <div
@@ -16,9 +16,9 @@ function Home() {
         height:"100vh"
       }}
     >
-      {(github && <Card github={github} />) || (
+      {(github && <Card github={github} legendary={legendary} />) || (
         <>
-          <Card github="guigoncalves182" />
+          <Card github="guigoncalves182" legendary/>
           <Card github="celymoon" />
           <Card github="martinsbrz" />
           <Card github="icarusramos" />
