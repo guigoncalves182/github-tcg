@@ -52,8 +52,10 @@ body {
     height: 25rem;
     overflow: hidden;
     position: relative;
+    @media only screen and (max-width: 600px) {
+      transform: translateZ(5em);
+    }
 
-   
 
     .title {
       font-size: larger;

@@ -5,7 +5,7 @@
   background: none;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -52,22 +52,24 @@ body {
     height: 25rem;
     overflow: hidden;
     position: relative;
+    @media only screen and (max-width: 600px) {
+      transform: translateZ(5em);
+    }
 
     .title {
       font-size: larger;
       text-transform: uppercase;
       background-image: linear-gradient(to top, #cfd9df80 0%, #e2ebf080 100%);
       border: 0.2rem solid black;
-      margin: .5rem 0.2rem;
+      margin: 0.5rem 0.2rem;
       border-radius: 0.5rem;
-      padding: 0.25rem; 
+      padding: 0.25rem;
 
       // .star{
       //   background: linear-gradient(to right, #f8360080 0%, #f9d42380 100%);
       //   -webkit-background-clip: text;
       //   -webkit-text-fill-color: transparent;
       // }
-
     }
 
     .bio {
@@ -82,7 +84,7 @@ body {
       white-space: pre-line;
     }
 
-    .location{
+    .location {
       font-size: xx-small;
       position: absolute;
       background-image: linear-gradient(to top, #cfd9df80 0%, #e2ebf080 100%);
@@ -90,9 +92,8 @@ body {
       margin: 0.2rem;
       border-radius: 0.5rem;
       top: 3rem;
-      right: .0rem;
+      right: 0rem;
       padding: 0.25rem;
     }
-
   }
 }
