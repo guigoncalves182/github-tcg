@@ -5,28 +5,32 @@ import Tilt from "react-parallax-tilt";
 
 function Card({ github, legendary = false }) {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${github}`)
       .then((response) => response.json())
       .then((result) => setUser(result))
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error", error))
+      .finally(() => setLoading(false));
   }, [github]);
 
   let glareColor = "#ffffff";
   if (legendary) glareColor = "#f9d423";
-  let styles
-  !legendary ? styles = card : styles = legend
+  let styles;
+  !legendary ? (styles = card) : (styles = legend);
 
+  if (loading) return "★ Loading your card ★";
   return (
     <a target="blank" href={user.html_url}>
       <Tilt
+        gyroscope={true}
         className={styles.card}
         glareEnable={true}
         glareColor={glareColor}
         scale={1}
         style={{ backgroundImage: `url("${user.avatar_url}")` }}
-      > 
+      >
         <div className={styles.inner}>
           <h1 className={styles.title}>
             {legendary && <span className={styles.star}> ★ </span>}
